@@ -88,11 +88,11 @@
             path = ./templates/flake-parts;
             description = "A flake with flake-parts, direnv and devenv.";
             welcomeText = ''
-	    # You are ready to run a model locally! For example:
-            ```sh
-	    curl -L -o mistral.gguf https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/resolve/main/mistral-7b-instruct-v0.1.Q4_K_M.gguf
-	    nix run -m mistral.gguf -ngl 9999
-            ```
+	      # You are ready to run a model locally! For example:
+	      ```sh
+	        curl -L -o mistral.gguf https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/resolve/main/mistral-7b-instruct-v0.1.Q4_K_M.gguf
+	        nix run -m mistral.gguf -ngl 9999```
+	      ```
 	    '';
           };
 
@@ -100,11 +100,11 @@
             path = ./templates/simple;
             description = "A direnv supported Nix flake with devenv integration.";
             welcomeText = ''
-	    # You are ready to run a model locally! For example:
-            ```sh
-	    curl -L -o mistral.gguf https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/resolve/main/mistral-7b-instruct-v0.1.Q4_K_M.gguf
-	    nix run -m mistral.gguf -ngl 9999
-            ```
+	      # You are ready to run a model locally! For example:
+	      ```sh
+	        curl -L -o mistral.gguf https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF/resolve/main/mistral-7b-instruct-v0.1.Q4_K_M.gguf
+	        nix run -m mistral.gguf -ngl 9999```
+	      ```
 	    '';
           
           };
