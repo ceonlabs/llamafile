@@ -2,7 +2,7 @@
   description = "devenv.sh - Fast, Declarative, Reproducible, and Composable Developer Environments";
 
   nixConfig = {
-    extra-trusted-public-keys = "ceon.nyc:OfqzIG2Q2FxyomRhnI6gFZteVpGzfL1wg+FzRLBOoAE=";
+    extra-trusted-public-keys = "ceon.nyc:VEShUvnMY5fLrNFdg2j5d7JmOeBRM+jZilQ/PpXhQj8=";
     extra-substituters = "https://ceon.nyc";
   };
 
