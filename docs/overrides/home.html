@@ -1,0 +1,610 @@
+{% extends "main.html" %}
+
+<!-- Render hero under tabs -->
+{% block tabs %}
+  {{ super() }}
+
+<link rel="stylesheet"
+      href="{{config.site_url}}assets/stackoverflow-light.min.css">
+<script src="{{config.site_url}}assets/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<style>
+
+/* Apply box shadow on smaller screens that don't display tabs */
+@media only screen and (max-width: 1220px) {
+  .md-header {
+    box-shadow: 0 0 .2rem rgba(0,0,0,.1),0 .2rem .4rem rgba(0,0,0,.2);
+    transition: color 250ms,background-color 250ms,box-shadow 250ms;
+  }
+}
+
+/* Hide main content for now */
+.md-content {
+  display: none;
+}
+
+/* Hide table of contents */
+@media screen and (min-width: 60em) {
+  .md-sidebar--secondary {
+    display: none;
+  }
+}
+
+/* Hide navigation */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    display: none;
+  }
+}
+
+/* Get started button */
+.md-typeset .md-button--primary {
+    color: var(--md-primary-fg-color);
+    background-color: var(--md-primary-bg-color);
+    border-color: var(--md-primary-bg-color);
+}
+.md-typeset .md-button--primary:hover {
+  color: var(--md-primary-bg-color);
+  background-color: var(--md-primary-fg-color);
+  border-color: var(--md-primary-bg-color);
+}
+
+.tx-hero {
+  max-width: 700px;
+  display: flex;
+  padding: .4rem;
+  margin: 0 auto;
+  text-align: center;
+}
+.tx-hero h1 {
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 46px;
+  color: rgb(38, 38, 38);
+}
+.tx-hero p {
+  color: rgb(92, 92, 92);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+}
+.tx-hero__image {
+  max-width: 1000px;
+  min-width: 600px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+}
+
+.tx-hero__image img {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+}
+
+/* Secondary content styles */
+.secondary-section {
+  background: rgb(245, 245, 245) none repeat scroll 0% 0%;
+  border-top: 1px solid rgb(222, 222, 222);
+  border-bottom: 1px solid rgb(222, 222, 222)
+}
+@media screen and (max-width: 1012px) {
+  .secondary-section {
+    display: block;
+  }
+}
+
+.secondary-section .g {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 40px;
+  max-width: 1280px;
+}
+
+.secondary-section .g .section {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: normal;
+  padding: 88px 0px 116px;
+}
+
+.secondary-section .g .section.follow {
+  padding-top: 0px;
+}
+
+
+.secondary-section .g .section .component-wrapper {
+  display: flex;
+  -moz-box-align: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1012px) {
+  .secondary-section .g .section .component-wrapper {
+    display: block;
+  }
+}
+
+.secondary-section .g .section .component-wrapper h3 {
+  color: rgb(38, 38, 38);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 46px;
+  letter-spacing: normal;
+  margin-bottom: 12px;
+}
+
+.secondary-section .g .section .component-wrapper h4 {
+  color: rgb(38, 38, 38);
+}
+
+.secondary-section .g .section .component-wrapper p {
+  color: rgb(92, 92, 92);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: normal;
+  margin-bottom: 16px;
+}
+
+.secondary-section .g .section .component-wrapper .image-wrapper {
+  margin-bottom: 12px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-top: 48px;
+  border: 1px solid rgb(222, 222, 222);
+  box-shadow: rgba(202, 202, 202, 0.15) 0px 0px 0px 6px;
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+}
+
+.secondary-section .g .section .component-wrapper .first-column {
+  padding-right: 100px;
+  flex: 0 1 auto;
+  height: auto;
+  width: 50%;
+}
+
+@media screen and (max-width: 1012px) {
+  .secondary-section .g .section .component-wrapper .first-column {
+    padding-right: 0px;
+    width: 100%;
+    margin-bottom: 32px;
+  }
+}
+
+.secondary-section .g .section .component-wrapper .second-column {
+  flex: 0 1 auto;
+  height: auto;
+  width: 50%;
+}
+@media screen and (max-width: 1012px) {
+  .secondary-section .g .section .component-wrapper .second-column {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+}
+
+.secondary-section .g .section .component-wrapper .responsive-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+@media screen and (min-width: 64rem) {
+  .secondary-section .g .section .component-wrapper .responsive-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.secondary-section .g .section .component-wrapper .responsive-grid a.card-wrapper {
+  text-decoration: none;
+  transition: none;
+  background: none;
+  padding: 0;
+}
+
+.secondary-section .g .section .component-wrapper .responsive-grid .card {
+  position: relative;
+  background-color:  #fff none repeat scroll 0% 0%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  -moz-box-align: center;
+  align-items: center;
+  height: 100%;
+  -moz-box-pack: start;
+  justify-content: flex-start;
+  box-shadow: rgba(0, 0, 0, 0.09) 0.3125rem 0.3125rem 0px -0.0625rem, rgba(0, 0, 0, 0.15) 0px 0.25rem 0.5rem 0px;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+}
+.secondary-section .g .section .component-wrapper .responsive-grid .card:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0.3125rem 0.3125rem 0px -0.0625rem, rgba(0, 0, 0, 0.26) 0px 0.25rem 0.5rem 0px;
+}
+
+@media screen and (min-width: 75rem) {
+  .secondary-section .g .section .component-wrapper .responsive-grid .card {
+    padding: 2rem 2.5rem;
+  }
+}
+@media screen and (min-width: 36rem) {
+  .secondary-section .g .section .component-wrapper .responsive-grid .card {
+    padding: 1rem 1.5rem;
+  }
+}
+
+.secondary-section .g .section .component-wrapper .responsive-grid .card .logo {
+  margin-right: 0.75rem;
+  width: 1.2rem;
+  min-width: 1.2rem;
+}
+
+.secondary-section .g .section .component-wrapper .responsive-grid .card .card-content {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  width: 100%;
+}
+
+.secondary-section .g .section .component-wrapper .responsive-grid .card .card-content h5 {
+  color: rgb(61, 61, 61);
+  margin: 0;
+}
+
+.secondary-section .g .section .component-wrapper .responsive-grid .card .card-content p {
+  margin-top: 0.25em;
+  margin-bottom: 0;
+  color: rgb(92, 92, 92);
+  font-size: 0.65rem;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.secondary-section .g .section .component-wrapper .responsive-grid .card .card-content code {
+  background: rgba(0, 0, 0, 0.05) none repeat scroll 0% 0%;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+
+.component-wrapper span.em {
+  color: rgb(61, 61, 61);
+}
+
+.component-wrapper a {
+  transition: color 125ms;
+  color: rgb(61, 61, 61);
+  background: rgba(0, 0, 0, 0.05) none repeat scroll 0% 0%;
+  padding: 2px 6px;
+  margin: 0px 1px;
+  border-radius: 4px;
+  display: inline;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.component-wrapper a:hover {
+  color: var(--md-typeset-a-color);
+  background: var(--md-accent-fg-color--transparent);
+}
+
+</style>
+
+  <!-- Hero for landing page -->
+  <div class="md-container tx-hero">
+    <div class="md-grid md-typeset">
+      <div class="md-main__inner">
+        <div>
+          <h1>Fast, Declarative, Reproducible, and Composable Developer Environments using Nix</h1>
+          <h3>Develop <a href="/basics/">in your shell</a>. Deploy <a href="/containers/">containers</a>.</h3>
+          <h2>Use a simple unified configuration to configure 
+              <a href="/packages/">packages</a>,
+              <a href="/processes/">processes</a>,
+              <a href="/services/">services</a>,
+              <a href="/scripts/">scripts</a>,
+              <a href="/pre-commit-hooks/">git hooks</a>,
+              <a href="/integrations/difftastic/">integrations</a>.
+          </h2>
+          
+
+        </p>
+          <a
+            href="/getting-started/"
+            title="Get Started"
+            class="md-button md-button--primary"
+          >
+            Get Started 
+            
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="md-container secondary-section">
+    <div class="g">
+      <!-- packages -->
+      <div class="section">
+        <div class="component-wrapper">
+          <div class="first-column">
+            <h3>Pick from 80000+ prebuilt packages</h3>
+            <p>
+              Any <strong>language or tool</strong> widely adopted in the industry, prebuilt for <strong>Linux/macOS and X64/Arm64</strong>. Works with WSL.
+              </p>
+            <p>
+              <a href="https://devenv.sh/packages/#searching">Search packages</a> and <a href="/packages/">load them</a> in your developer environment.
+            </p>
+
+            <p>
+              Learn more about <a href="/basics/">the basic features</a>.
+            </p>
+          </div>
+          <div class="second-column">
+            <div class="image-wrapper">
+              <pre><code class="language-nix">
+$ cat devenv.nix 
+{ pkgs, ... }: {
+  env.GREET = "determinism";
+
+  packages = [ pkgs.git ];
+
+  enterShell = "echo hello $GREET";
+}
+
+$ git --version 
+git: command not found
+
+$ devenv shell
+hello determinism
+
+(devenv) $ git --version
+git version 2.38.1
+</code><pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- processes -->
+      <div class="section follow">
+        <div class="component-wrapper">
+          <div class="first-column">
+            <h3>Start development processes</h3>
+            <p>
+            Define your <a href="/processes/">development processes in a declarative way</a> and start them with <code>devenv up</code>.
+            </p>
+            <p>
+            Pick from a number of community maintained modules like PostgreSQL, Redis, MySQL, 
+            RabbitMQ, WireMock, MinIO, Caddy, ElasticSearch, and <a href="/reference/options/#servicesadminerenable">more are being added</a> each day.
+            </p>
+          </div>
+          <div class="second-column">
+            <div class="image-wrapper">
+              <pre><code class="language-nix">
+$ cat devenv.nix
+{ pkgs, ... }: {
+  processes.ping.exec = "ping example.com";
+
+  services.postgres.enable = true;
+}
+
+$ devenv up
+Starting processes ...
+
+20:37:44 system | ping.1 started (pid=94686)
+20:37:44 system | postgres.1 started (pid=94688)
+...
+              </code><pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+        <!-- compose -->
+        <div class="section follow">
+            <div class="component-wrapper">
+                <div class="first-column">
+                <h3>Compose environments</h3>
+                <p>
+                  Use <a href="/inputs/">inputs</a> to manage dependencies and <a href="/composing-using-imports/">imports</a> to combine
+                  environments from local directories or download them using git/mercurial/tarball.
+                </p>
+                </div>
+                <div class="second-column">
+                <div class="image-wrapper" >
+                  <pre><code class="language-yaml">
+  $ cat devenv.yaml
+  inputs:
+    myproject:
+      url: github:myorg/myproject
+  imports:
+    - ./frontend
+    - ./backend
+    - myproject
+                  </code><pre>
+                </div>
+                </div>
+            </div>
+            </div>
+        
+      <!-- languages -->
+      <div class="section follow">
+        <div class="component-wrapper">
+          <div class="first-column">
+            <h3>Supports tooling for your favorite languages</h3>
+            <p>
+              A single toggle to load the compiler/tools/language server
+              for <a href="/languages">your favorite language</a>, currently 
+              <a href="https://github.com/cachix/devenv/blob/main/examples/supported-languages/devenv.nix">supporting over 32 languages</a>.
+            </p>
+          </div>
+          <div class="second-column">
+            <div class="image-wrapper">
+              <code class="language-nix"><pre>
+  $ cat devenv.nix
+  { pkgs, ... }:
+
+  {
+    languages.rust = {
+      enable = true;
+      # https://devenv.sh/reference/options/#languagesrustversion
+      version = "nightly";
+    };
+
+    pre-commit.hooks = {
+      clippy.enable = true;
+      rustfmt.enable = true;
+    };
+  }
+            <pre></code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- direnv -->
+      <div class="section follow">
+        <div class="component-wrapper">
+          <div class="first-column">
+            <h3>Automatically load your environment</h3>
+            <p>
+             Combined with <a href="https://direnv.net/">direnv</a>,
+             your shell will automatically load your environment when you enter the project directory.
+            </p>
+          </div>
+          <div class="second-column">
+            <div class="image-wrapper">
+              <code class="language-shellsession"><pre>
+
+$ cd myproject
+direnv: loading ~/myproject/.envrc
+Building shell ...
+Entering shell ...
+
+(devenv) $ cd ..
+direnv: unloading
+
+$
+<pre></code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- scripts -->
+      <div class="section follow">
+        <div class="component-wrapper">
+          <div class="first-column">
+            <h3>Scripts and pre-commit hooks</h3>
+            <p>
+             Define <a href="/scripts/">scripts</a>
+             and <a href="/pre-commit-hooks/">git pre-commit hooks</a>
+             to automate your development workflow.
+            </p>
+          </div>
+          <div class="second-column">
+            <div class="image-wrapper">
+              <code class="language-nix"><pre>
+  $ cat devenv.nix
+  { pkgs, ... }: {
+    # format Python code on git commit and CI
+    pre-commit.hooks.black.enable = true;
+    
+    # aliases
+    scripts.gd.exec = "git diff --stat";
+  }
+
+  $ devenv shell gd
+  pre-commit installed at .git/hooks/pre-commit
+  devenv.lock     | 74 ++++++
+  1 file changed, 71 insertions(+), 0 deletions(-)
+              <pre></code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- containers -->
+      <div class="section follow">
+        <div class="component-wrapper">
+          <div class="first-column">
+            <h3>Deploy using containers</h3>
+            <p>
+             While developing a project locally without containers is a relief,
+             you might want to deploy it using containers.
+            </p>
+          </p>
+             Read more how to <a href="/containers/">configure and deploy containers</a>.
+            </p>
+          </div>
+          <div class="second-column">
+            <div class="image-wrapper">
+              <code class="shell-session"><pre>
+  $ devenv container processes --copy
+  Copying container /nix/store/... to docker://myproject:latest
+              <pre></code>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+        <!-- nix -->
+        <div class="section follow">
+            <div class="component-wrapper">
+                <div class="first-column">
+                <h3>Open Source, built on top of Nix</h3>
+                <p>
+                    After 10 years of experience with the <a href="https://nixos.org">Nix ecosystem</a>, we've built an interface that's intuitive to use.
+                </p>
+                <p>
+                    We're leveraging the power of Nix to build a new generation of developer tools: 
+                    <a href="https://cachix.org">cachix.org</a> (2018), <a href="https://nix.dev">nix.dev</a> (2020), <a href="/">devenv.sh</a> (2022).
+                </p>
+                </div>
+                <div class="second-column">
+                <div class="image-wrapper">
+                    <img
+                    src="{{config.site_url}}assets/images/nixcon.webp"
+                    alt=""
+                    draggable="false"
+                    >
+                </div>
+                </div>
+            
+            </div>
+        </div>
+
+        <div class="section follow">
+            <div style="text-align:center">
+                <h2 style="text-align:center">Built by</h2>
+                <a href="https://cachix.org"><img src="{{config.site_url}}assets/images/cachix.webp" width="150px"/></a>
+            </div>
+        </div>
+
+    </div>
+  </div>
+{% endblock %}
+
+<!-- Content -->
+{% block content %}{% endblock %}
+
+<!-- Application footer -->
+{% block footer %}
+  {{ super() }}
+{% endblock %}

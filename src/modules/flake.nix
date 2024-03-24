@@ -1,0 +1,6 @@
+{
+  outputs = { ... }: {
+    modules = ./.;
+    hasTmpDir = true;
+  };
+}

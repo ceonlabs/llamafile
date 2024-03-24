@@ -1,0 +1,10 @@
+allowUnfree: true
+inputs:
+  subflake:
+    url: path:./subflake
+    overlays:
+      - default
+  rust-overlay:
+    url: github:oxalica/rust-overlay
+    overlays:
+      - default

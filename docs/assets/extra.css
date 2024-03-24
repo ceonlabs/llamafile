@@ -1,0 +1,18 @@
+/* hide site name */
+.md-header__topic {
+    visibility: hidden;
+}
+/* mobile hide site name */
+.md-nav__title {
+    font-size: 0!important;
+}
+
+/* mobile make code snippets scrollable */
+.image-wrapper {
+    overflow: auto!important;
+}
+
+/* add some whitespace under hero CTA button */
+.md-main__inner {
+    padding-bottom: 1rem;
+}
