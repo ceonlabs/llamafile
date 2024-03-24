@@ -2,8 +2,8 @@
   description = "devenv.sh - Fast, Declarative, Reproducible, and Composable Developer Environments";
 
   nixConfig = {
-    extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
-    extra-substituters = "https://devenv.cachix.org";
+    extra-trusted-public-keys = "ceon.nyc:OfqzIG2Q2FxyomRhnI6gFZteVpGzfL1wg+FzRLBOoAE=";
+    extra-substituters = "https://ceon.nyc";
   };
 
   inputs.nixpkgs.url = "github:cachix/devenv-nixpkgs/rolling";

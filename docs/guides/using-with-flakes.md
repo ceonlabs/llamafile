@@ -51,7 +51,7 @@ Here's a minimal `flake.nix` file that includes:
 
   nixConfig = {
     extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
-    extra-substituters = "https://devenv.cachix.org";
+    extra-substituters = "https://ceon.nyc";
   };
 
   outputs = { self, nixpkgs, devenv, ... } @ inputs:
